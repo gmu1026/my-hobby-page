@@ -28,4 +28,11 @@ public class Content {
 		this.link = link;
 		this.description = description;
 	}
+	
+	public void update(String date, String title, String link, String description) {
+		this.date = date;
+		this.title = title;
+		this.link = link;
+		this.description = description;
+	}
 }
