@@ -16,7 +16,7 @@ script: "./gradlew clean build"
 before_deploy:
    - zip -r my-hobby-page *
    - mkdir -p deploy
-   - mv my-hobby-page-backend.zip deploy/my-hobby-page-backend.zip
+   - mv my-hobby-page.zip deploy/my-hobby-page.zip
 deploy:
 - provider: s3
   access_key_id: "$AWS_ACCESS_KEY"
