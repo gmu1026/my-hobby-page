@@ -19,7 +19,7 @@ public class WoowaCrawler {
 	
 	// 추후 properties로 대체
 	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
-	public static final String WEB_DRIVER_PATH = "chromedriver";
+	public static final String WEB_DRIVER_PATH = "/usr/local/bin/chromedriver";
 	
 	// 추후 복수 개의 url 저장을 위해 collection으로 대체
 	private String target_url;
@@ -31,6 +31,8 @@ public class WoowaCrawler {
 		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
+		options.addArguments("no-sandbox");
+		options.addArguments("disable-dev-shm-usage");
 		
 		driver = new ChromeDriver(options);
 		target_url = "https://woowabros.github.io";
