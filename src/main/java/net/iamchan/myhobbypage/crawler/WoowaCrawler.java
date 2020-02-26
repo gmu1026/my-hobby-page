@@ -41,26 +41,28 @@ public class WoowaCrawler {
 		
 	}
 	
-	@Scheduled(fixedRate = 600000)
+	@Scheduled(fixedRate = 86400000)
 	public void crawlToInfo() throws Exception {
 		restTemplate = new RestTemplate();
+		String description = "";
 		
 		List<WebElement> infoList = driver.findElements(By.className("list-module"));
 		for (WebElement info : infoList) {
 			WebElement postMetaDate = info.findElement(By.className("post-meta"));
 			WebElement postLink = info.findElement(By.tagName("a"));
 			WebElement postTitle = info.findElement(By.className("post-link"));
-//			WebElement postDescription = info.findElement(By.className("post-description"));
-			
+			description =
+					postLink.getText().split("\n").length >= 2 ? postLink.getText().split("\n")[1] : "설명 없음"; 
+					
 			Content crawlData = Content.builder()
 					.date(postMetaDate.getText())
 					.title(postTitle.getText())
 					.link(postLink.getAttribute("href"))
-//					.description(postDescription.getText())
+					.description(description)
 					.build();
 			
 			
-			String apiUrl = "http://localhost/api/v1/content";
+			String apiUrl = "http://localhost:9000/api/v1/content";
 			restTemplate.postForEntity(apiUrl, crawlData, Integer.class);
 		}
 	}
