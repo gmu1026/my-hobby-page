@@ -19,7 +19,7 @@ public class WoowaCrawler {
 	
 	// 추후 properties로 대체
 	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
-	public static final String WEB_DRIVER_PATH = "chromedriver.exe";
+	public static final String WEB_DRIVER_PATH = "./chromedriver.exe";
 	
 	// 추후 복수 개의 url 저장을 위해 collection으로 대체
 	private String target_url;
@@ -62,7 +62,7 @@ public class WoowaCrawler {
 					.build();
 			
 			
-			String apiUrl = "http://localhost:9000/api/v1/content";
+			String apiUrl = "http://localhost:8080/api/v1/content";
 			restTemplate.postForEntity(apiUrl, crawlData, Integer.class);
 		}
 	}
