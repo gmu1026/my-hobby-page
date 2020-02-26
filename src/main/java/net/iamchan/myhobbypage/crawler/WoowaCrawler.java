@@ -19,7 +19,7 @@ public class WoowaCrawler {
 	
 	// 추후 properties로 대체
 	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
-	public static final String WEB_DRIVER_PATH = "chromedriver.exe";
+	public static final String WEB_DRIVER_PATH = "chromedriver";
 	
 	// 추후 복수 개의 url 저장을 위해 collection으로 대체
 	private String target_url;
@@ -27,8 +27,6 @@ public class WoowaCrawler {
 	private RestTemplate restTemplate;
 	
 	public WoowaCrawler() {
-		super();
-		
 		System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 		
 		ChromeOptions options = new ChromeOptions();
