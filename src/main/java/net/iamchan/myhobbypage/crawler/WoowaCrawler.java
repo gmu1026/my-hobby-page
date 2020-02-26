@@ -37,8 +37,6 @@ public class WoowaCrawler {
 		driver = new ChromeDriver(options);
 		target_url = "https://woowabros.github.io";
 		driver.get(target_url);
-		
-		
 	}
 	
 	@Scheduled(fixedRate = 86400000)
