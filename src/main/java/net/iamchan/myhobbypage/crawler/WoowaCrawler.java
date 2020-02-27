@@ -19,8 +19,8 @@ public class WoowaCrawler {
 	
 	// 추후 properties로 대체
 	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
-	public static final String WEB_DRIVER_PATH1 = "/usr/local/bin/chromedriver";
-	public static final String WEB_DRIVER_PATH = "C:\\chromedriver.exe";
+	public static final String WEB_DRIVER_PATH = "/usr/local/bin/chromedriver";
+	public static final String WEB_DRIVER_PATH1 = "C:\\chromedriver.exe";
 	// 추후 복수 개의 url 저장을 위해 collection으로 대체
 	private String target_url;
 	
