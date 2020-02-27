@@ -19,8 +19,8 @@ public class WoowaCrawler {
 	
 	// 추후 properties로 대체
 	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
-	public static final String WEB_DRIVER_PATH = "/usr/local/bin/chromedriver";
-	
+	public static final String WEB_DRIVER_PATH1 = "/usr/local/bin/chromedriver";
+	public static final String WEB_DRIVER_PATH = "C:\\chromedriver.exe";
 	// 추후 복수 개의 url 저장을 위해 collection으로 대체
 	private String target_url;
 	
@@ -31,8 +31,9 @@ public class WoowaCrawler {
 		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
-		options.addArguments("no-sandbox");
+		options.addArguments("--no-sandbox");
 		options.addArguments("disable-dev-shm-usage");
+		options.addArguments("--disable-gpu");
 		
 		driver = new ChromeDriver(options);
 		target_url = "https://woowabros.github.io";
@@ -53,7 +54,7 @@ public class WoowaCrawler {
 					postLink.getText().split("\n").length >= 2 ? postLink.getText().split("\n")[1] : "설명 없음"; 
 					
 			Content crawlData = Content.builder()
-					.date(postMetaDate.getText())
+					.metaData(postMetaDate.getText())
 					.title(postTitle.getText())
 					.link(postLink.getAttribute("href"))
 					.description(description)

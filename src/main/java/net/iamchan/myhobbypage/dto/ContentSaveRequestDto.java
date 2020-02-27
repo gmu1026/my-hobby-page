@@ -8,14 +8,14 @@ import net.iamchan.myhobbypage.domain.Content;
 @Getter
 @NoArgsConstructor
 public class ContentSaveRequestDto {
-	private String date;
+	private String metaData;
 	private String title;
 	private String link;
 	private String description;
 	
 	@Builder
-	public ContentSaveRequestDto(String date, String title, String link, String description) {
-		this.date = date;
+	public ContentSaveRequestDto(String metaData, String title, String link, String description) {
+		this.metaData = metaData;
 		this.title = title;
 		this.link = link;
 		this.description = description;
@@ -23,7 +23,7 @@ public class ContentSaveRequestDto {
 	
 	public Content toEntity() {
 		return Content.builder()
-				.date(date)
+				.metaData(metaData)
 				.title(title)
 				.link(link)
 				.description(description)

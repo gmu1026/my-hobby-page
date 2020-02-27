@@ -36,6 +36,7 @@ dependencies {- 3
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0-alpha-4'
+	compile("org.mariadb.jdbc:mariadb-java-client")
 }
 
 test {
