@@ -16,21 +16,21 @@ public class Content {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String date;
+	private String metaData;
 	private String title;
 	private String link;
 	private String description;
 	
 	@Builder
-	public Content(String date, String title, String link, String description) {
-		this.date = date;
+	public Content(String metaData, String title, String link, String description) {
+		this.metaData = metaData;
 		this.title = title;
 		this.link = link;
 		this.description = description;
 	}
 	
-	public void update(String date, String title, String link, String description) {
-		this.date = date;
+	public void update(String metaData, String title, String link, String description) {
+		this.metaData = metaData;
 		this.title = title;
 		this.link = link;
 		this.description = description;
