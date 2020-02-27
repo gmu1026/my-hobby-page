@@ -16,6 +16,7 @@ script: "./gradlew clean build"
 before_deploy:
    - zip -r my-hobby-page *
    - mkdir -p deploy
+   - cp scripts/*.sh deploy/
    - mv my-hobby-page.zip deploy/my-hobby-page.zip
 deploy:
 - provider: s3
