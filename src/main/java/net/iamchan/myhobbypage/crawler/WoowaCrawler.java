@@ -18,6 +18,7 @@ public class WoowaCrawler {
 	private WebDriver driver;
 	
 	// 추후 properties로 대체
+	// properties profile을 이용해 local test 환경과 deployment 환경 분리할 것
 	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
 	public static final String WEB_DRIVER_PATH = "/usr/local/bin/chromedriver";
 	public static final String WEB_DRIVER_PATH1 = "C:\\chromedriver.exe";

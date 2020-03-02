@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOSITORY=/home/ec2-user/app/my-hobby-page-backend/zip/build/libs
+REPOSITORY=/home/ec2-user/app/my-hobby-page-backend/zip
 
 echo "> 현재 구동중인 애플리케이션 PID 확인"
 
