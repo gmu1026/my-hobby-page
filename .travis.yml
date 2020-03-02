@@ -16,6 +16,7 @@ script: "./gradlew clean build"
 before_deploy:
    - zip -r my-hobby-page *
    - mkdir -p deploy
+   - cp scripts/*.sh deploy/
    - mv my-hobby-page.zip deploy/my-hobby-page.zip
 deploy:
 - provider: s3
@@ -38,5 +39,3 @@ deploy:
   region: ap-northeast-2
   wait-until-deployed: true
 notifications:
-  slack:
-    secure: R0wRLtvI0d2rwWj6PW5HghyeXBjJskfTzsxOiPsrzrJzHWsEruk7uSd0f7PSqFyWlT4zn3lOiLrsKQ4lqFIxqJUDkNe7RaLW9Js7kjp338y30uiqZpRg4b139L25Ld/R9vrVYxyv7CxfPumRqCdzCkMVrp1+VocLYwCBbECAm96Xz8PoIP5zS6j93VYtk4Re4GQNCq4A10+SOzM2W6kxr9hujJ/Tqoy0yRPIy3cHZbmIzcPRigei/yB31d0bNL0QbigRPr1v3htJZ+llrIYcQKAdWjipXp7POwF8P54z3kb4ZR5POgNCfWlJEfDrjo3mZuTs/8rpTJSAaEvTxgWN9TIV3P8BMpOQLQURX6P6Cjm92ArUGXxdyfjc3bhTCdNsQTG/l6tublt98lqHRd7rs/ij9nl0TFSbXHHtDrrK73VsU8ydzHeQXRMJrpqBYGJHav8ulWH98uoGxmp7HtT5deLQoFf8xzsfm71DfCOs4nPG3E/Olt6GiGgSPhPjPgBZTOyKhk6QtmZ0d3EQyTneXnyrHnMK+tRxLZFcS1D+qqVO9cLGriH/dP/+B5866O/sUHsqrLfiK/lfGRU/otAJXNEU715oY3WmbqK0d0+vlI27igGkTrIhoo+tws4NeVz8+49AngR8TIRT6xO4TXDzSPQoUCcV4RSS+AF18u7GRh8=
