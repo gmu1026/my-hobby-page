@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -14,16 +16,18 @@ import org.springframework.web.client.RestTemplate;
 import net.iamchan.myhobbypage.domain.Content;
 
 @Component
+@ConfigurationProperties("webdriver")
 public class WoowaCrawler {
 	private WebDriver driver;
 	
+//	@Autowired
+//	private CrawlerProperties crawlerProperties;
 	// 추후 properties로 대체
 	// properties profile을 이용해 local test 환경과 deployment 환경 분리할 것
 	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
 	public static final String WEB_DRIVER_PATH = "/usr/local/bin/chromedriver";
-	public static final String WEB_DRIVER_PATH1 = "C:\\chromedriver.exe";
+//	public static final String WEB_DRIVER_PATH = "C:\\chromedriver.exe";
 	// 추후 복수 개의 url 저장을 위해 collection으로 대체
-	private String target_url;
 	
 	private RestTemplate restTemplate;
 	
@@ -37,12 +41,12 @@ public class WoowaCrawler {
 		options.addArguments("--disable-gpu");
 		
 		driver = new ChromeDriver(options);
-		target_url = "https://woowabros.github.io";
-		driver.get(target_url);
 	}
 	
 	@Scheduled(fixedRate = 86400000)
 	public void crawlToInfo() throws Exception {
+		driver.get("https://woowabros.github.io");
+
 		restTemplate = new RestTemplate();
 		String description = "";
 		
@@ -60,7 +64,6 @@ public class WoowaCrawler {
 					.link(postLink.getAttribute("href"))
 					.description(description)
 					.build();
-			
 			
 			String apiUrl = "http://localhost:8080/api/v1/content";
 			restTemplate.postForEntity(apiUrl, crawlData, Integer.class);
