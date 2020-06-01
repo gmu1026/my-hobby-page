@@ -36,7 +36,8 @@ public class ContentApiController {
 	}
 	
 	@PutMapping("/api/v1/content/{id}")
-	public Long update(@PathVariable Long id, @RequestBody ContentUpdateRequestDto requestDto) {
+	public Long update(@PathVariable Long id
+			, @RequestBody ContentUpdateRequestDto requestDto) {
 		return contentService.update(id, requestDto);
 	}
 	
@@ -55,10 +56,5 @@ public class ContentApiController {
 	@GetMapping("/api/v1/content/list2")
 	public Page<Content> findAllPage(final Pageable pageable) {
 		return contentService.findAll(pageable);
-	}
-	
-	@GetMapping("/api/v1/test")
-	public String test() {
-		return "hello";
 	}
 }

@@ -27,6 +27,7 @@ dependencies {- 3
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-mustache'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	compile "org.springframework.boot:spring-boot-starter-security"
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -35,8 +36,10 @@ dependencies {- 3
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	testCompile group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
 	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0-alpha-4'
 	compile("org.mariadb.jdbc:mariadb-java-client")
+	compile group: 'com.auth0', name: 'java-jwt', version: '3.10.0'
 }
 
 test {
